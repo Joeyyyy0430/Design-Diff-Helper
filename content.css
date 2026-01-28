@@ -1,0 +1,190 @@
+/* content.css - Apple Style Edition */
+
+/* 1. 全局字体与重置 */
+#diff-checker-panel {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  color: #1d1d1f;
+}
+
+#diff-checker-panel button, 
+#diff-checker-panel input {
+  font-family: inherit;
+  outline: none;
+}
+
+/* 2. 按钮样式 (Apple Style Buttons) */
+/* 主操作按钮：蓝色、圆角、无阴影但有点击态 */
+.apple-btn-primary {
+  background: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.apple-btn-primary:hover {
+  background: #0062cc;
+}
+.apple-btn-primary:active {
+  transform: scale(0.98);
+  background: #0056b3;
+}
+.apple-btn-primary:disabled {
+  background: #E5E5EA;
+  color: #8E8E93;
+  cursor: not-allowed;
+}
+
+/* 次级按钮：灰色背景 */
+.apple-btn-secondary {
+  background: rgba(118, 118, 128, 0.12);
+  color: #1d1d1f;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.apple-btn-secondary:hover {
+  background: rgba(118, 118, 128, 0.2);
+}
+
+/* 幽灵按钮 (Reset) */
+.apple-btn-ghost {
+  background: transparent;
+  color: #8E8E93;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.apple-btn-ghost:hover {
+  background: rgba(0,0,0,0.05);
+  color: #1d1d1f;
+}
+
+/* 3. 分段控制器 (Segmented Control) - 类似 macOS 设置 */
+.segmented-control {
+  display: flex;
+  background: rgba(118, 118, 128, 0.12);
+  padding: 2px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.mode-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #1d1d1f;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.mode-btn.active {
+  background: #FFFFFF;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 0.5px 1px rgba(0,0,0,0.08);
+}
+
+/* 4. 输入框 (Inputs) */
+.apple-input {
+  border: 1px solid #D1D1D6;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #FFFFFF;
+}
+.apple-input:focus {
+  border-color: #007AFF;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+}
+
+/* 5. 滑块 (Sliders) - iOS 风格 */
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: #E5E5EA;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 1px rgba(0,0,0,0.2);
+  cursor: grab;
+  margin-top: -8px; /* 居中 */
+  transition: transform 0.1s;
+}
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.1);
+  cursor: grabbing;
+}
+
+/* 6. Diff 表格 */
+.diff-header {
+  font-size: 11px;
+  color: #8E8E93;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #E5E5EA;
+}
+
+.diff-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 1fr;
+  gap: 8px;
+  padding: 8px 4px;
+  border-bottom: 1px solid #F2F2F7;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.1s;
+  align-items: center;
+}
+.diff-row:hover {
+  background: #F2F2F7;
+}
+.diff-row:last-child {
+  border-bottom: none;
+}
+.diff-row.is-error .dom-val {
+  color: #FF3B30; /* System Red */
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.diff-row.is-error .figma-val {
+  color: #34C759; /* System Green */
+  font-weight: 600;
+}
+.prop-name {
+  color: #8E8E93;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.dom-val, .figma-val {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+/* 7. 扫描线手柄 */
+#swipe-handle {
+  /* 基础样式在 JS 里，这里补充 hover 态 */
+  transition: background 0.2s;
+}
+#swipe-handle:hover {
+  background: rgba(255, 59, 48, 0.8) !important;
+}

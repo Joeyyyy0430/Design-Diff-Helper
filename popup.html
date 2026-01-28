@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>来找茬 - 设计校对工具</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>来找茬</h1>
+      <div class="controls">
+        <button id="toggleSelectMode" class="btn btn-primary">开启选择模式</button>
+        <button id="checkDiff" class="btn btn-secondary" disabled>检测差异</button>
+      </div>
+    </header>
+
+    <div class="section">
+      <h2>当前选中的元素</h2>
+      <div id="currentElement" class="info-box">
+        <p class="placeholder">未选中元素</p>
+      </div>
+      <div id="figmaLinkInput" class="input-group" style="display: none;">
+        <label>Figma 链接：</label>
+        <input type="text" id="figmaLink" placeholder="粘贴 Figma Frame/Node 链接">
+        <button id="saveFigmaLink" class="btn btn-small">保存</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>差异列表</h2>
+      <div id="diffList" class="diff-list">
+        <p class="placeholder">暂无差异记录</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>需要修复的问题</h2>
+      <div id="fixRequiredList" class="fix-required-list">
+        <p class="placeholder">暂无需要修复的问题</p>
+      </div>
+      <div class="export-buttons">
+        <button id="exportCSV" class="btn btn-export" disabled>导出 CSV</button>
+        <button id="exportMarkdown" class="btn btn-export" disabled>导出 Markdown</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

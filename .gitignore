@@ -1,0 +1,12 @@
+# Mac 系统文件
+.DS_Store
+
+# Windows 系统文件
+Thumbs.db
+
+# IDE 配置文件 (如果你用 VSCode 或 WebStorm)
+.vscode/
+.idea/
+
+# 这里的 .zip 是你发给同事的安装包，不需要传到代码库里
+*.zip

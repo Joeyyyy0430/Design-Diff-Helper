@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>生成图标</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    canvas {
+      border: 1px solid #ddd;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      background: #1890ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #40a9ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>生成插件图标</h1>
+    <p>点击下面的按钮生成不同尺寸的图标，然后右键保存为 PNG 文件。</p>
+    
+    <div>
+      <canvas id="canvas16" width="16" height="16"></canvas>
+      <button onclick="downloadCanvas('canvas16', 'icon16.png')">下载 16x16</button>
+    </div>
+    
+    <div>
+      <canvas id="canvas48" width="48" height="48"></canvas>
+      <button onclick="downloadCanvas('canvas48', 'icon48.png')">下载 48x48</button>
+    </div>
+    
+    <div>
+      <canvas id="canvas128" width="128" height="128"></canvas>
+      <button onclick="downloadCanvas('canvas128', 'icon128.png')">下载 128x128</button>
+    </div>
+  </div>
+
+  <script>
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      
+      // 清空画布
+      ctx.clearRect(0, 0, size, size);
+      
+      // 绘制背景
+      ctx.fillStyle = '#1890ff';
+      ctx.fillRect(0, 0, size, size);
+      
+      // 绘制简单的"找"字图标（简化版）
+      ctx.fillStyle = 'white';
+      ctx.font = `bold ${size * 0.6}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('找', size / 2, size / 2);
+    }
+    
+    function downloadCanvas(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+    
+    // 初始化绘制
+    window.onload = function() {
+      drawIcon(document.getElementById('canvas16'), 16);
+      drawIcon(document.getElementById('canvas48'), 48);
+      drawIcon(document.getElementById('canvas128'), 128);
+    };
+  </script>
+</body>
+</html>
